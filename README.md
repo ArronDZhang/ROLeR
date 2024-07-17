@@ -1,1 +1,1 @@
-The code for the 33rd ACM International Conference on Information and Knowledge Management (CIKM) will be available around 20, Aug. 2024.
+The code for "ROLeR: Effective Reward Shaping in Offline Reinforcement Learning for Recommender Systems" will be available around 20, Aug. 2024. It is accepted by the 33rd ACM International Conference on Information and Knowledge Management (CIKM 2024).
