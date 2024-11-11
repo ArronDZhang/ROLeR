@@ -19,7 +19,6 @@ visualization/results
 results_for_paper/*.pdf
 *.pdf
 *.pth
-*.png
 #results_for_paper/
 
 *.egg*
@@ -38,3 +37,6 @@ events.*
 *._*
 
 wandb/
+
+src/*.png
+data_analysis/*.png
