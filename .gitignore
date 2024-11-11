@@ -38,5 +38,5 @@ events.*
 
 wandb/
 
-src/*.png
-data_analysis/*.png
+src/**/*.png
+data_analysis/**/*.png
