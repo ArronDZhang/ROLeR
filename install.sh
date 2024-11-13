@@ -4,5 +4,5 @@ pip install  --upgrade --no-cache-dir torch tensorflow scipy scikit-learn tqdm l
 
 #pip install -i https://mirrors.aliyun.com/pypi/simple/ --upgrade torch
 
-#pip install -i https://mirrors.aliyun.com/pypi/simple/  --upgrade --no-cache-dir tensorflow 
+#pip install -i https://mirrors.aliyun.com/pypi/simple/  --upgrade --no-cache-dir tensorflow
 
