@@ -42,7 +42,7 @@ from util.utils import LoggerCallback_Policy, save_model_fn
 import logzero
 from logzero import logger
 
-from pre_utils import knn_based_pred_reward
+from rew_reshape import knn_based_pred_reward
 
 try:
     import envpool
