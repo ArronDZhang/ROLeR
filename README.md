@@ -30,14 +30,7 @@ More details can be found in our [paper](https://arxiv.org/abs/2407.13163). The 
    sh install.sh
    ```
 
-3. Install the tianshou package from [DORL](https://github.com/chongminggao/DORL-codes)'s forked version: 
-
-   ```bash
-   cd src
-   git clone https://github.com/chongminggao/tianshou.git
-   git reset --hard 0f59e38
-   cd ..
-   ```
+Note: To avoid potential package conflicts, we choose to use a fixed version of [tianshou](https://github.com/thu-ml/tianshou). Thus, you do not need to manually install it.
 
 
 
