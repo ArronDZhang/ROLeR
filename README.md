@@ -1,3 +1,12 @@
+# README for ROLeR
+
+- 过一遍DORL的README并对照着写自己的README
+- 理清每个文件夹的功能并陈述
+- 放脚本和logs，清理整理现有的脚本
+- 放DORL的参考链接
+
+
+
 # ROLeR: Effective Reward Shaping in Offline Reinforcement Learning for Recommender Systems
 
 This repository provides the official PyTorch implementation, reproduction and experiment logs for the paper titled "ROLeR: Effective Reward Shaping in Offline Reinforcement Learning for Recommender Systems." Within this paper, experiments are conducted on four RL environments: ```KuaiEnv-v0```, ```KuaiRand-v0```, ```CoatEnv-v0``` and ```Yahoo-v0```, whose introduction can be found at [KuaiRec](https://kuairec.com/), [KuaiRand](https://kuairand.com/), [Coat](https://www.cs.cornell.edu/~schnabts/mnar/), and [Yahoo](https://dl.acm.org/doi/10.1145/1639714.1639717).
@@ -162,6 +171,18 @@ python run_Policy_Main.py --env YahooEnv-v0 --seed 0 --cuda 1 --num_leave_comput
 - ```--change_pred_reward``` and ```--change_var``` means whether to reshape the reward models in the world models and change the uncertainty penalties computed with an ensemble of world models, respectively;
 - If the reward models need reshaping, ```--kr``` specifies the number of neighbors during reshaping and ```--ku``` has similar meaning when computing the new uncertainty penalty;
 - ```--uncern_type``` decides the way of computing the uncertainty penalty. The variants in our experiment section (i.e., Sec 6.4) can be explored through this argument.
+
+#### Logs
+
+In the log files, they begin with the information of all hyperparameters, then the learning summary of each epoch is exhibited. For instance:
+
+```
+[I 240730 00:27:12 utils:142] Epoch: [7], Info: [{'num_test': 100, 'CV': '0.01323', 'CV_turn': '0.02480', 'ctr': '0.91395', 'len_tra': 17.74, 'R_tra': 16.21351899179315, 'ifeat_feat': 0.46561443066516345, 'NX_0_CV': '0.02104', 'NX_0_CV_turn': '0.02625', 'NX_0_ctr': '0.86991', 'NX_0_len_tra': 26.67, 'NX_0_R_tra': 23.200455494459856, 'NX_0_ifeat_feat': 0.44956880389951254, 'NX_10_CV': '0.01443', 'NX_10_CV_turn': '0.04800', 'NX_10_ctr': '0.90791', 'NX_10_len_tra': 10.0, 'NX_10_R_tra': 9.079061016921857, 'NX_10_ifeat_feat': 0.452}]
+```
+
+In this summary, **NX_0_R_tra** stands for the average cumulative reward across 100 testing trajectories. Similarly,  **NX_0_len_tra** and **NX_0_ctr** specifiy the average interaction length and single-step reward, respectively.
+
+For your convenience, we have collected all the log files in the main experiment in ```results_for_paper/main_exp_logs```.
 
 
 
