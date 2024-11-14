@@ -110,7 +110,7 @@ python run_Policy_Main.py --env KuaiRand-v0 --seed 0 --cuda 0 --num_leave_comput
 python run_Policy_Main.py --env KuaiRand-v0 --seed 0 --cuda 0 --num_leave_compute 1 --leave_threshold 0 --which_tracker avg --reward_handle "cat" --lambda_variance 0.01 --lambda_entropy 0.05 --window_size 3 --read_message "pointneg" --message "DORL"
 
 ## Our ROLeR
-python run_Policy_Main.py --env KuaiRand-v0 --seed 0 --cuda 1 --num_leave_compute 1 --leave_threshold 0 --which_tracker avg --reward_handle "cat" --lambda_variance 0.01 --lambda_entropy 0.05  --window_size 3 --read_message "pointneg"  --message "DORL" --remark std --scratch True --change_pred_reward True --change_var True --kr 150 --ku 150 --uncertain_type II-weight-norm
+python run_Policy_Main.py --env KuaiRand-v0 --seed 0 --cuda 1 --num_leave_compute 1 --leave_threshold 0 --which_tracker avg --reward_handle "cat" --lambda_variance 0.01 --lambda_entropy 0.05  --window_size 3 --read_message "pointneg"  --message "ROLeR" --remark std --scratch True --change_pred_reward True --change_var True --kr 150 --ku 150 --uncertain_type II-weight-norm
 ```
 
 **CoatEnv-v0**
