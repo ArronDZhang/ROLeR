@@ -29,7 +29,7 @@ events.*
 *.log
 *.xlsx
 *.tex
-*.pdf
+
 
 # for excluding the uncompressed dataset files.
 *.tar.gz
@@ -40,3 +40,5 @@ wandb/
 
 src/**/*.png
 data_analysis/**/*.png
+data_analysis/**/*.pdf
+results_for_paper/**/*.pdf
