@@ -16,10 +16,7 @@ visualization/figures
 visualization/results
 
 *.zip
-results_for_paper/*.pdf
-#*.pdf
 *.pth
-#results_for_paper/
 
 *.egg*
 events.*
