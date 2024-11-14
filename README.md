@@ -4,6 +4,14 @@ This repository provides the official PyTorch implementation, reproduction and e
 
 More details can be found in our [paper](https://arxiv.org/abs/2407.13163). The authors are Yi Zhang, Ruihong Qiu, Jiajun Liu, and Sen Wang.
 
+<div style="text-align: center;">
+    <figure>
+        <img src="figs/Intro.png" alt="introduction" style="zoom:100%;" />
+        <figcaption style="font-size: 14px; color: #555;">The reward estimation error of a world model and ROLeR across different intervals. Our training-free reward shaping constantly outperforms that of the current world model, reaching a higher relative cumulative reward.</figcaption>
+    </figure>
+</div>
+
+
 
 
 ## Installation
@@ -68,7 +76,9 @@ Note:
 
 1) The above commands are exammplified with ```KuaiEnv-v0```. To train the world models for KuaiRand, Coat and Yahoo, you just need to change the argument of ```--env``` to ```KuaiRand-v0```, ```CoatEnv-v0``` and ```Yahoo-v0```, respectively;
 
-2) The arguments of  ```--message``` in the commands are hooks which serve as identifiers for algorithms to retrieve necessary elements in the next step (i.e., recommendation policy learning). 
+2) The arguments of  ```--message``` in the commands are hooks which serve as identifiers for algorithms to retrieve necessary elements in the next step (i.e., recommendation policy learning);
+
+3) After running the commands, the results will be saved in ```ROLeR/saved_models/```.
 
 ### Step 2: Recommendation Policy Learning
 
@@ -147,6 +157,8 @@ python run_Policy_Main.py --env YahooEnv-v0 --seed 0 --cuda 0 --num_leave_comput
 python run_Policy_Main.py --env YahooEnv-v0 --seed 0 --cuda 1 --num_leave_compute 1 --leave_threshold 0 --which_tracker att --reward_handle "cat" --lambda_variance 0.005 --lambda_entropy 1  --window_size 5 --read_message "pointneg"  --message "ROLeR" --scratch True --change_pred_reward True --change_var True --kr 20 --ku 20 --remark std --uncertain_type II-weight-norm
 ```
 
+Note: After running the above commands, the results will also be saved in ```ROLeR/saved_models/```.
+
 ### Brief Introduction of Arguments and Logs
 
 #### Arguments Introduction
@@ -173,9 +185,70 @@ In the log files, they begin with the information of all hyperparameters, then t
 
 In this summary, **NX_0_R_tra** stands for the average cumulative reward across 100 testing trajectories. Similarly,  **NX_0_len_tra** and **NX_0_ctr** specifiy the average interaction length and single-step reward, respectively.
 
-For your convenience, we have collected all the log files in the main experiment in ```results_for_paper/main_exp_logs```.
+For your convenience, we have collected all the log files in the main experiment in ```results_for_paper/main_exp_logs```, namely:
+
+```
+main_exp_logs
+├── KuaiRec
+│   ├── [BCQ-leave4]_2023_01_17-19_28_01.log
+│   ├── [CQL-leave4]_2023_01_17-19_28_01.log
+│   ├── [CRR-leave4]_2023_01_17-19_28_00.log
+│   ├── [DORL]_2023_01_18-17_45_45.log
+│   ├── [epsilon-greedy]_2023_01_18-18_17_21.log
+│   ├── [GT Reward]_2024_01_09-01_50_40_att3_init_real_rew.log
+│   ├── [IPS-leave4]_2023_01_17-19_28_00.log
+│   ├── [MBPO]_2023_01_18-17_45_45.log
+│   ├── [MOPO]_2023_01_18-17_45_45.log
+│   ├── [ROLeR]_2024_02_07-19_27_10_ROLeR_KuaiRec_best.log
+│   ├── [SQN-leave4]_2023_01_17-19_28_01.log
+│   ├── [UCB]_2023_01_18-18_17_21.log
+│   └── CIRS_epoch200.log
+├── KuaiRand
+│   ├── [BCQ-leave4]_2023_01_17-19_28_00.log
+│   ├── [CQL-leave4]_2023_01_17-19_28_01.log
+│   ├── [CRR-leave4]_2023_01_17-19_28_01.log
+│   ├── [DORL]_2023_01_19-08_20_56.log
+│   ├── [epsilon-greedy]_2023_01_18-18_17_22.log
+│   ├── [GT Reward]_2024_01_25-16_47_00_avg3_init_real_rewardv2.log
+│   ├── [IPS-leave4]_2023_01_17-19_28_00.log
+│   ├── [MBPO]_2023_01_18-17_45_46.log
+│   ├── [MOPO]_2023_01_19-08_21_04.log
+│   ├── [ROLeR]_2024_05_11-12_33_29_k30II-weight-norm.log
+│   ├── [SQN-leave4]_2023_01_17-19_28_00.log
+│   └── [UCB]_2023_01_18-18_17_21.log
+├── Coat
+│   ├── [BCQ]_2024_04_13-22_34_43.log
+│   ├── [CQL]_2024_04_13-22_04_59.log
+│   ├── [CRR]_2024_04_13-21_42_50.log
+│   ├── [DORL]_2024_01_26-14_29_23_U0.005.log
+│   ├── [epsilon-greedy]_2024_04_13-19_54_40.log
+│   ├── [GT Reward]_2024_05_19-15_15_39_GT_rew_pro.log
+│   ├── [IPS]_2024_04_13-23_04_41.log
+│   ├── [MBPO]_2024_04_14-00_34_26.log
+│   ├── [MOPO_U0.2]_2024_04_14-12_43_51.log
+│   ├── [ROLeR]_2024_05_19-12_09_53_weight_k15
+│   ├── [SQN]_2024_04_13-21_15_54
+│   └── [UCB]_2024_04_13-18_30_57
+├── Yahoo
+│   ├── [BCQ]_2024_04_14-13_40_13.log
+│   ├── [CQL]_2024_05_20-03_45_03.log
+│   ├── [CRR]_2024_04_14-12_35_47.log
+│   ├── [DORL]_2024_01_26-14_47_18_U0.01.log
+│   ├── [epsilon-greedy]_2024_04_14-06_17_41.log
+│   ├── [GT Reward]_2024_05_18-15_38_17_GT_rew.log
+│   ├── [IPS]_2024_04_14-14_13_18.log
+│   ├── [MBPO]_2024_04_14-14_49_05.log
+│   ├── [MOPO_U0.05]_2024_04_14-15_59_58.log
+│   ├── [ROLeR]_2024_05_19-10_41_39_weight_k20.log
+│   ├── [SQN]_2024_04_14-12_03_27.log
+│   └── [UCB]_2024_04_14-00_31_31.log
+```
+
+Note: for all the baselines in [DORL](https://arxiv.org/pdf/2307.04571.pdf) on KuaiRec and KuaiRand, as we can reproduce their results, we reuse the logs in [DORL's repo](https://github.com/chongminggao/DORL-codes/tree/main/results_for_paper/results_all).
 
 
+
+## Cite
 
 If you find this repo useful, please cite
 
