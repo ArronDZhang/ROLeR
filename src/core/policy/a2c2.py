@@ -6,8 +6,6 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
-from util.vis import svd_reduction_and_visualization
-
 from core.policy.utils import get_emb, removed_recommended_id_from_embedding, get_recommended_ids
 from tianshou.data import Batch, ReplayBuffer, to_torch_as
 from tianshou.policy import A2CPolicy
@@ -257,9 +255,6 @@ class A2CPolicy_withEmbedding(A2CPolicy):
 
             state_repr = torch.unique(torch.cat(self.state_repr, 0), dim=0)
             action_emb = state_repr[:,:-1]
-            # if self.count > 100:
-            #     svd_reduction_and_visualization(action_emb.cpu().detach().numpy())
-                # svd_reduction_and_visualization(state_repr.cpu().detach().numpy())
 
         return {
             "loss": losses,
