@@ -1,12 +1,3 @@
-# README for ROLeR
-
-- 过一遍DORL的README并对照着写自己的README
-- 理清每个文件夹的功能并陈述
-- 放脚本和logs，清理整理现有的脚本
-- 放DORL的参考链接
-
-
-
 # ROLeR: Effective Reward Shaping in Offline Reinforcement Learning for Recommender Systems
 
 This repository provides the official PyTorch implementation, reproduction and experiment logs for the paper titled "ROLeR: Effective Reward Shaping in Offline Reinforcement Learning for Recommender Systems." Within this paper, experiments are conducted on four RL environments: ```KuaiEnv-v0```, ```KuaiRand-v0```, ```CoatEnv-v0``` and ```Yahoo-v0```, whose introduction can be found at [KuaiRec](https://kuairec.com/), [KuaiRand](https://kuairand.com/), [Coat](https://www.cs.cornell.edu/~schnabts/mnar/), and [Yahoo](https://dl.acm.org/doi/10.1145/1639714.1639717).
