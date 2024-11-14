@@ -23,7 +23,6 @@ events.*
 
 .vscode/
 
-*.log
 *.xlsx
 *.tex
 
