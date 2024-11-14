@@ -12,7 +12,6 @@ import inspect
 from core.inputs import input_from_feature_columns
 from core.layers import Linear, create_embedding_matrix
 from core.user_model_variance import UserModel_Variance, compute_input_dim
-from core.user_model_variance_sam import UserModel_Variance_SAM
 
 
 class UserModel_Pairwise_Variance(UserModel_Variance):
