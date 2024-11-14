@@ -219,8 +219,7 @@ def prepare_envs(args, ensemble_models, alpha_u=None, beta_i=None):
         maxvar_mat = pickle.load(file)
 
     if args.change_pred_reward or args.change_var:
-        knn_based_reward, knn_based_var = knn_based_pred_reward(args.env, args.kr, args.ku, args.uncertain_type,
-                                                                args.init_data, args.num_iter)
+        knn_based_reward, knn_based_var = knn_based_pred_reward(args.env, args.kr, args.ku, args.uncertain_type)
     else:
         knn_based_reward, knn_based_var = None, None
 
