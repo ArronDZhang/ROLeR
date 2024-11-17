@@ -16,21 +16,34 @@ More details can be found in our [paper](https://arxiv.org/abs/2407.13163). The 
 
 ## Installation
 
-1. Clone this repo and create a new virtual environment with:
+1. Clone this repo and enter into the directory:
 
    ```shell
    git clone https://github.com/ArronDZhang/ROLeR.git && cd ROLeR
-   conda create --name roler python=3.10 -y
    ```
 
-2. Activate the created environment and install the requirements with:
+2. Here we offer three ways to create the same virtual environment as ours. You can choose whichever option is most convenient for you.
+
+   a) with environments.yml [recommended]
 
    ```bash
+   conda env create -f environment.yml
    conda activate roler
-   sh install.sh
    ```
 
-Note: To avoid potential package conflicts, we choose to use a fixed version of [tianshou](https://github.com/thu-ml/tianshou). Thus, you do not need to manually install it.
+   b) with Docker [recommended]
+
+   
+
+   c) with requirements.txt
+
+   ```shell
+   conda create --name roler python=3.10 -y
+   conda activate roler
+   pip install -r requirements.txt
+   ```
+
+  Note: To avoid potential package conflicts, we choose to use a fixed version of [tianshou](https://github.com/thu-ml/tianshou). Thus, you do not need to manually install it.
 
 
 
