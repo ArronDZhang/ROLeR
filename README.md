@@ -22,7 +22,7 @@ More details can be found in our [paper](https://arxiv.org/abs/2407.13163). The 
    git clone https://github.com/ArronDZhang/ROLeR.git && cd ROLeR
    ```
 
-2. Here we offer three ways to create the same virtual environment as ours. You can choose whichever option is most convenient for you.
+2. Our environment can be reproduced with either conda or pip:
 
    a) with environments.yml [recommended]
 
@@ -31,11 +31,7 @@ More details can be found in our [paper](https://arxiv.org/abs/2407.13163). The 
    conda activate roler
    ```
 
-   b) with Docker [recommended]
-
-   
-
-   c) with requirements.txt
+   b) with requirements.txt
 
    ```shell
    conda create --name roler python=3.10 -y
