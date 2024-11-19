@@ -149,16 +149,6 @@ class SimulatedEnv(gym.Env):
             else:
                 max_var = self.maxvar_mat[self.cur_user[0], action]
             
-            # if max_var != 0:
-            #     print("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
-
-            # # get variance
-            # max_var = self.maxvar_mat[self.cur_user[0], action]  # todo
-
-            # get entropy
-            # entropy_u = 0
-            # if 0 in self.entropy_window:
-            #     entropy_u = self.entropy_dict["on_user"].loc[self.cur_user[0]]
             entropy = 0
             entropy_set = set(self.entropy_window) - {0}
             if len(entropy_set):
@@ -191,53 +181,6 @@ class SimulatedEnv(gym.Env):
             else:
                 NotImplementedError
 
-
-            ## Don YZ test
-            # rew = torch.normal(torch.tensor(pred_reward), torch.tensor(self.lambda_entropy * entropy \ 
-            # - self.MIN_R - self.lambda_variance * max_var))
-            # penalized_reward = np.array(rew)
-            # penalized_reward = self.lambda_entropy * entropy
-            # penalized_reward = - self.lambda_variance * max_var + self.lambda_entropy * entropy - self.MIN_R
-            # penalized_reward = pred_reward - self.lambda_variance * max_var # compare with MOPO
-            # penalized_reward = - self.lambda_variance * max_var
-            # penalized_reward = pred_reward + self.lambda_entropy * entropy - self.MIN_R
-            # penalized_reward = pred_reward
-
-            # penalized_reward = pred_reward - self.MIN_R
-
-            ## self.max_history, self.env_task.total_turn self.total_turn (need to +1) can reflect env step here
-
-            # decay_func, ascending_func = np.exp(-decay_rate*t), np.exp(0.06*t)
-            # penalized_reward = pred_reward * np.exp(-1 * self.max_history) - self.lambda_variance * max_var + \
-            #                    np.exp(0.06 * self.max_history) * entropy - self.MIN_R
-            # penalized_reward = pred_reward - self.lambda_variance * max_var + \
-            #                             np.exp(0.06 * self.max_history) * entropy - self.MIN_R
-            # penalized_reward = pred_reward * np.exp(-1 * self.max_history) - self.lambda_variance * max_var + \
-            #                    self.lambda_entropy * entropy - self.MIN_R
-
-            # decay_func, ascending_func = np.exp(-decay_rate*t), np.exp(0.06*t)
-            # penalized_reward = pred_reward * np.exp(-1 * self.max_history) + np.exp(0.06 * self.max_history) * entropy - self.MIN_R
-            # penalized_reward = pred_reward + np.exp(0.06 * self.max_history) * entropy - self.MIN_R
-            # penalized_reward = pred_reward * np.exp(-1 * self.max_history) + self.lambda_entropy * entropy - self.MIN_R
-
-            # decay_func, ascending_func = np.exp(-0.06*t), np.exp(0.06*t)
-            # penalized_reward = pred_reward * np.exp(-0.06 * self.max_history) + np.exp(0.06 * self.max_history) * entropy - self.MIN_R
-            # penalized_reward = pred_reward + np.exp(0.06 * self.max_history) * entropy - self.MIN_R
-            # penalized_reward = pred_reward * np.exp(-0.06 * self.max_history) + self.lambda_entropy * entropy - self.MIN_R
-
-            # decay_func, ascending_func = np.exp(-0.06*t), np.exp(0.06*t)
-            # penalized_reward = pred_reward * np.exp(-0.06 * self.max_history) - self.lambda_variance * max_var + \
-            #                    np.exp(0.06 * self.max_history) * entropy - self.MIN_R
-            # penalized_reward = pred_reward - self.lambda_variance * max_var + \
-            #                             np.exp(0.06 * self.max_history) * entropy - self.MIN_R
-            # penalized_reward = pred_reward * np.exp(-1 * self.max_history) - self.lambda_variance * max_var + \
-            #                    self.lambda_entropy * entropy - self.MIN_R
-
-            # penalized_reward = pred_reward - np.exp(-0.1*self.max_history) * max_var + \
-            #                    self.lambda_entropy * entropy - self.MIN_R
-            # penalized_reward = pred_reward - (1/600*self.max_history) * max_var + \
-            #                    self.lambda_entropy * entropy - self.MIN_R
-
         if self.version == "v1":
             # version 1
             final_reward = clip0(penalized_reward) / (1.0 + exposure_effect)
@@ -264,29 +207,6 @@ class SimulatedEnv(gym.Env):
 
         # 3. Predict click score, i.e, reward
         pred_reward = self._compute_pred_reward(exposure_effect, action)
-
-        ## Don YZ test
-        # max_var = self.maxvar_mat[self.cur_user[0], action]
-        # entropy = 0
-        # entropy_set = set(self.entropy_window) - {0}
-        # if len(entropy_set):
-        #     action_k = self.history_action[max(0, self.total_turn - self.step_n_actions + 1):self.total_turn + 1]
-        #     if hasattr(self.env_task, "lbe_item") and self.env_task.lbe_item:
-        #         action_trans = self.env_task.lbe_item.inverse_transform(action_k)
-        #     else:
-        #         action_trans = action_k
-        #     action_reverse = action_trans[::-1]
-        #     for k in range(len(action_reverse)):
-        #         action_set = tuple(sorted(action_reverse[:k + 1]))
-        #         # print(action_set)
-        #         if action_set in self.entropy_dict["map"]:
-        #             entropy += self.entropy_dict["map"][action_set]
-        #         else:
-        #             entropy += 1 # todo! 补足差额
-        #     if len(action_reverse) < self.step_n_actions:
-        #         entropy += self.step_n_actions - len(action_reverse) # todo 补足差额
-        # pred_reward = real_reward - self.lambda_variance * max_var + \
-        #                        self.lambda_entropy * entropy - self.MIN_R
 
         # pred_reward = real_reward
 
